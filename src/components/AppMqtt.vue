@@ -31,7 +31,7 @@
       | .
       br
       br
-      | Since data is transferred over the open internet
+      | Since data is transferred over the open internet,
       | security is achieved by encrypting traffic using 
       a.white--text.font-weight-bold(
         href="https://docs.aws.amazon.com/iot/latest/developerguide/x509-client-certs.html"
