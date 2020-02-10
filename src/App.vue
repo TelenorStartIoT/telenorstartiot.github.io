@@ -1,6 +1,6 @@
 <template lang="pug">
 v-app
-  app-header
+  app-header(v-if="showHeader")
   v-content
     router-view
 </template>
@@ -14,8 +14,11 @@ export default {
     AppHeader
   },
   data: () => ({
-    //
-  })
+    showHeader: true
+  }),
+  mounted () {
+    this.showHeader = !this.$route.query.hasOwnProperty('noheader')
+  }
 }
 </script>
 
