@@ -7,10 +7,21 @@ html
 a
   text-decoration none
 
-.v-application .v-window-item code
-  background-color unset !important
-  color unset !important
-  font-weight unset !important
-  white-space unset !important
-  -webkit-box-shadow unset !important
-  box-shadow unset !important
+.v-application .v-window-item
+  pre
+    margin 0
+    border-top-left-radius 0
+    border-top-right-radius 0
+
+  code
+    background-color unset !important
+    color unset !important
+    font-weight unset !important
+    font-size 70% !important
+    white-space unset !important
+    -webkit-box-shadow unset !important
+    box-shadow unset !important
+
+.v-application code:before
+  content unset !important
+  letter-spacing unset !important

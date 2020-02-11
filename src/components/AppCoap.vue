@@ -60,13 +60,41 @@
             td Method
             td
               b POST
+
+  v-card.mt-6
+    v-tabs(
+      v-model="tab"
+      background-color="secondary"
+      dark
+    )
+      v-tab MicroPython
+    v-tabs-items(v-model="tab")
+      v-tab-item
+        vue-code-highlight
+          pre
+            .
+              import microcoapy
+
+              def callback(self, packet, sender):
+                print('Message received:', packet, ', from: ', sender)
+                print('Mesage payload: ', packet.payload.decode('unicode_escape'))
+
+              client = microcoapy.Coap()
+              client.resposeCallback = callback
+              client.start()
+
+              client.post('172.16.32.1', 5683, '/request/uri', 'payload')
+              client.poll(2000)
 </template>
 
 <script>
+import { component as VueCodeHighlight } from 'vue-code-highlight'
+
 export default {
   name: 'AppCoap',
+  components: { VueCodeHighlight },
   data: () => ({
-    //
+    tab: null
   })
 }
 </script>

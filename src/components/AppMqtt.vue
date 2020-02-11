@@ -47,11 +47,6 @@
         | AWS Signature Version 4
         v-icon.mx-1(small) mdi-open-in-new
       | . Different MQTT topic structures apply based on the chosen encryption method.
-      br
-      br
-      br
-      br
-      br
 
       v-divider.my-6
 
@@ -82,12 +77,69 @@
             td Port
             td
               b 8883
+              kbd.ml-3 MQTT over TLS with X.509 certificate authentication
           tr
+            td Port
             td
-            td
-          tr
-            td
-            td
+              b 443
+              kbd.ml-3 MQTT over WebSocket/TLS with SigV4 authentication
+
+  v-card.mt-6
+    v-tabs(
+      v-model="tab"
+      background-color="secondary"
+      dark
+    )
+      v-tab Node.js
+      v-tab Node.js (SigV4)
+    v-tabs-items(v-model="tab")
+      v-tab-item
+        vue-code-highlight
+          pre
+            .
+              const awsIot = require('aws-iot-device-sdk');
+              const thingName = '00000XXX';
+ 
+              const device = awsIot.device({
+                 keyPath: 'privkey.pem',
+                certPath: 'cert.pem',
+                  caPath: 'ca.pem',
+                    host: 'a15nxxwvsld4o-ats.iot.eu-west-1.amazonaws.com',
+                    port: 8883,
+                clientId: thingName
+              });
+
+              device.on('connect', () => {
+                device.subscribe(`$aws/things/${thingName}/shadow/update`);
+              });
+              
+              device.on('message', (topic, message) => {
+                console.log('Message: ', topic, message.toString());
+              });
+      v-tab-item
+        vue-code-highlight
+          pre
+            .
+              const awsIot = require('aws-iot-device-sdk');
+              const thingName = '00000XXX';
+ 
+              const device = awsIot.device({
+                    protocol: 'wss',
+                 accessKeyId: AWS_ACCESS_KEY_ID,
+                   secretKey: AWS_SECRET_ACCESS_KEY,
+                sessionToken: AWS_SESSION_TOKEN,
+                        host: 'a15nxxwvsld4o-ats.iot.eu-west-1.amazonaws.com',
+                        port: 443,
+                    clientId: thingName
+              });
+
+              device.on('connect', () => {
+                device.subscribe(`thing-update/My/Domain/Path/#`);
+              });
+              
+              device.on('message', (topic, message) => {
+                console.log('Message: ', topic, message.toString());
+              });
 </template>
 
 <script>
