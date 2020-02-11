@@ -47,6 +47,11 @@
         | AWS Signature Version 4
         v-icon.mx-1(small) mdi-open-in-new
       | . Different MQTT topic structures apply based on the chosen encryption method.
+      br
+      br
+      br
+      br
+      br
 
       v-divider.my-6
 
@@ -68,6 +73,7 @@
             td APN
             td
               b telenor.iot
+              kbd.ml-3 Full internet access
           tr
             td Host
             td
@@ -85,10 +91,13 @@
 </template>
 
 <script>
+import { component as VueCodeHighlight } from 'vue-code-highlight'
+
 export default {
   name: 'AppMqtt',
+  components: { VueCodeHighlight },
   data: () => ({
-    // 
+    tab: null
   })
 }
 </script>

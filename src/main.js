@@ -3,6 +3,7 @@ import router from '@/router'
 import store from '@/store'
 
 // Styles
+import 'vue-code-highlight/themes/prism.css'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
 import '@/assets/styles/global.styl'

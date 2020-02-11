@@ -15,10 +15,13 @@
       | is lightweight, built on UDP and resembles the HTTP protocol.
       | You can send requests to <b>endpoints</b> with different <b>methods</b>.
       | CoAP messages go trough the Telenor <b>IoT Gateway</b>, which forwards messages to Telenor Managed IoT Cloud (MIC).
+      | Both non-confirmable and confirmable frames for reliable and acknowledgeable transfer is supported.
       br
       br
       | This is an alternative for devices that may not support a full TCP/IP stack or lack encryption capabilities.
-      | Security is achieved by tunneling traffic through a private APN with RADIUS authentication.
+      | Data is transported in a secure VPN to the IoT platform without exposing devices or data traffic to the internet.
+      | Authentication towards the IoT platform is handled by the mobile network, eliminating this as a separate
+      | process from the devices with X.509 certificates.
 
       v-divider.my-6
 
@@ -40,6 +43,7 @@
             td APN
             td
               b telenor.iotgw
+              kbd.ml-3 Separate VPN towards the IoT platform
           tr
             td IP
             td
