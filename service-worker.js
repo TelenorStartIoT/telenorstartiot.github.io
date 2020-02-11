@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.202276d467daa082697418fa16354b5b.js"
+  "/precache-manifest.ba65b3937161476ed5b9c98424a5d42f.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "telenorstartiot.github.io"});
