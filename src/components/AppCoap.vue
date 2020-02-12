@@ -7,7 +7,7 @@
   )
     v-card-text.white--text.intro
       a.white--text.font-weight-bold(
-        href="#"
+        href="https://coap.technology/"
         target="_new"
       )
         | CoAP
