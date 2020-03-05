@@ -55,7 +55,7 @@
           tr
             td Endpoint
             td
-              b /request/uri
+              b /
           tr
             td Method
             td
