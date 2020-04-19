@@ -73,18 +73,16 @@
         vue-code-highlight
           pre
             .
-              import microcoapy
+              from network import Coap
 
-              def callback(self, packet, sender):
-                print('Message received:', packet, ', from: ', sender)
-                print('Mesage payload: ', packet.payload.decode('unicode_escape'))
+              def callback(code, id_param, type_param, token, payload):
+                print('Response: {}'.format(payload))
 
-              client = microcoapy.Coap()
-              client.resposeCallback = callback
-              client.start()
+              Coap.init('10.8.0.16')
+              Coap.register_response_handler(callback)
 
-              client.post('172.16.32.1', 5683, '/request/uri', 'payload')
-              client.poll(2000)
+              Coap.send_request('172.16.32.1', Coap.REQUEST_POST, uri_port=5683, uri_path='/', payload='payload_data', include_options=True)
+              Coap.read()
 </template>
 
 <script>
